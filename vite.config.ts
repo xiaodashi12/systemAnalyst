@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import obfuscator from 'rollup-plugin-obfuscator'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -7,6 +8,23 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     rollupOptions: {
+      plugins: [
+        obfuscator({
+          options: {
+            compact: true,
+            controlFlowFlattening: false, // Set false to maintain performance
+            deadCodeInjection: false,
+            debugProtection: true, // Prevents console debugger
+            debugProtectionInterval: 4000,
+            disableConsoleOutput: true, // Disables console logging
+            selfDefending: true, // Prevents pretty-printing/formatting
+            stringArray: true,
+            stringArrayRotate: true,
+            stringArrayShuffle: true,
+            stringArrayThreshold: 0.8,
+          },
+        }),
+      ],
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
@@ -23,6 +41,7 @@ export default defineConfig({
     }
   }
 })
+
 
 
 
