@@ -1,17 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import ReaderView from '../views/ReaderView.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: () => import('../views/HomeView.vue'),
   },
   {
     path: '/reader/:bookId',
     name: 'reader',
-    component: ReaderView,
+    component: () => import('../views/ReaderView.vue'),
     props: true,
   },
 ];
@@ -20,3 +18,4 @@ export const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
