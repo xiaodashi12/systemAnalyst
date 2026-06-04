@@ -374,7 +374,7 @@ function openBook(bookId: string) {
   background-color: var(--bg-card);
   color: var(--text-primary);
   outline: none;
-  font-size: 13px;
+  font-size: 16px;
   box-shadow: var(--shadow-sm);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }

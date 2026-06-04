@@ -559,7 +559,7 @@ function highlightText(text: string, query: string) {
   outline: none;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 16px;
   transition: border-color var(--transition-fast);
 }
 
