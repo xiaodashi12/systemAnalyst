@@ -1,0 +1,210 @@
+:root {
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, SF Pro Text, monospace;
+
+  /* Theme: Light (Default) */
+  --bg-primary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-menu: rgba(255, 255, 255, 0.85);
+  --bg-overlay: rgba(0, 0, 0, 0.4);
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  
+  /* Accents */
+  --accent-color: #3b82f6;
+  --accent-color-hover: #2563eb;
+  --accent-light: rgba(59, 130, 246, 0.1);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Reader Settings */
+  --reader-bg: #f3f4f6;
+  --reader-card-bg: #ffffff;
+  --reader-text: #111827;
+  
+  /* Animations */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+/* Theme overrides */
+[data-theme='dark'] {
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-menu: rgba(30, 41, 59, 0.85);
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border-color: #334155;
+  
+  --accent-color: #60a5fa;
+  --accent-color-hover: #93c5fd;
+  --accent-light: rgba(96, 165, 250, 0.15);
+  
+  --reader-bg: #0b0f19;
+  --reader-card-bg: #151d30;
+  --reader-text: #e2e8f0;
+}
+
+[data-theme='sepia'] {
+  --bg-primary: #f4eae1;
+  --bg-card: #fdf6e3;
+  --bg-menu: rgba(253, 246, 227, 0.9);
+  --bg-overlay: rgba(60, 40, 20, 0.3);
+  --text-primary: #5c4738;
+  --text-secondary: #705e52;
+  --text-muted: #a39081;
+  --border-color: #e6d8c9;
+  
+  --accent-color: #b58900;
+  --accent-color-hover: #cb4b16;
+  --accent-light: rgba(181, 137, 0, 0.1);
+  
+  --reader-bg: #ebdccb;
+  --reader-card-bg: #fbf1c7;
+  --reader-text: #3c3836;
+}
+
+[data-theme='green'] {
+  --bg-primary: #edf4ed;
+  --bg-card: #f4faf4;
+  --bg-menu: rgba(244, 250, 244, 0.9);
+  --bg-overlay: rgba(20, 40, 20, 0.3);
+  --text-primary: #2d4a2d;
+  --text-secondary: #406340;
+  --text-muted: #7fa47f;
+  --border-color: #dae8da;
+  
+  --accent-color: #2e7d32;
+  --accent-color-hover: #1b5e20;
+  --accent-light: rgba(46, 125, 50, 0.1);
+  
+  --reader-bg: #d0ebd0;
+  --reader-card-bg: #e8f5e9;
+  --reader-text: #1b5e20;
+}
+
+/* Reset and Global Styles */
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.5;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Custom UI Helpers */
+.glassmorphism {
+  background: var(--bg-menu);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.clickable {
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease, opacity var(--transition-fast);
+}
+
+.clickable:active {
+  transform: scale(0.96);
+}
+
+/* Mobile Wrapper Rules */
+@media (min-width: 500px) {
+  /* Center the app on larger screens for perfect mobile simulation */
+  #app {
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-primary);
+    position: relative;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+  }
+  
+  body {
+    background-color: #111827; /* Dark background outer frame */
+  }
+}
+
+/* Page transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  transform: translateY(100%);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-right-enter-from,
+.slide-right-leave-to {
+  transform: translateX(-100%);
+}
