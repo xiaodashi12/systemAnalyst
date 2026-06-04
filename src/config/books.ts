@@ -7,6 +7,7 @@ export interface Book {
   coverColor: string;
   author: string;
   pages?: number;
+  pagesUrlBase?: string;
 }
 
 export const booksList: Book[] = [
@@ -18,6 +19,8 @@ export const booksList: Book[] = [
     description: '全国计算机技术与软件专业技术资格（水平）考试指定用书，系统分析师考试的核心教材。',
     coverColor: 'linear-gradient(135deg, #4f46e5, #3b82f6)',
     author: '全国计算机专业技术资格考试办公室',
-    pages: 777 // Pre-filled from our diagnostic test
+    pages: 777,
+    pagesUrlBase: 'https://systemanalyst-1259702897.cos.ap-shanghai.myqcloud.com/sys-analyst-2nd/'
   }
 ];
+

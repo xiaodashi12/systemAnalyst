@@ -49,7 +49,14 @@ function selectTheme(themeName: ReaderTheme) {
 
 // Get Image URL for a specific page
 function getPageUrl(page: number) {
-  return `/pages/${props.bookId}/page_${String(page).padStart(4, '0')}.jpg`;
+  const filename = `page_${String(page).padStart(4, '0')}.jpg`;
+  if (bookConfig?.pagesUrlBase) {
+    const base = bookConfig.pagesUrlBase.endsWith('/')
+      ? bookConfig.pagesUrlBase
+      : `${bookConfig.pagesUrlBase}/`;
+    return `${base}${filename}`;
+  }
+  return `/pages/${props.bookId}/${filename}`;
 }
 
 const currentPageUrl = computed(() => getPageUrl(currentPage.value));
