@@ -7,6 +7,7 @@ export default defineConfig({
   base: './',
   plugins: [vue()],
   build: {
+    sourcemap: false, // Ensure source maps are disabled so original code cannot be reconstructed
     rollupOptions: {
       plugins: [
         obfuscator({
@@ -41,7 +42,3 @@ export default defineConfig({
     }
   }
 })
-
-
-
-
